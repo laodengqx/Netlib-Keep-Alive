@@ -38,43 +38,10 @@
    * 在仓库 `Settings` → `Secrets and variables` → `Actions` → `New repository secret` 中为每个账号添加用户名和密码，例如：
    * 格式如下（每个账号用 `;` 分隔，每个账号用户名和密码用 `,` 分隔）：、
 
-`Name` 填入 `SITE_ACCOUNTS`
-
-`Secret` 填入
-```
-user1,password1;user2,password2;user3,password3
-```
-
-* 可根据需要增加任意数量账号。
-
-3. **修改登录脚本（可选）**
-
-   * 默认脚本已支持从 `SITE_ACCOUNTS` 环境变量读取账号信息，无需修改。
-   * 若需要，本地测试可直接修改 `login.py` 文件的 `accounts` 列表。
-
-4. **安装依赖（本地运行）**
-
-```bash
-pip install --upgrade pip
-pip install playwright
-python -m playwright install chromium
-```
-
-5. **本地运行**
-
-```bash
-# Linux/macOS
-eport SITE_ACCOUNTS="user1,password1;user2,password2"
-# Windows PowerShell
-set SITE_ACCOUNTS=user1,password1;user2,password2
-python login.py
-```
-
-* 脚本会自动循环登录每个账号
-* 每个账号操作步骤间隔 2 秒
-* 打开网页后等待 5 秒
-* 登录成功后停留 5 秒
-* 终端打印每个账号登录结果 ✅ 或 ❌
+`UZANTONOMO`填入：你的用户名
+`PASVORTO`填入：你的密码
+`TELEGRAM_SIGNALO`填入：你的机器人token
+`TELEGRAM_BABILO_ID`填入：你的id
 
 6. **GitHub Actions 自动运行**
 
@@ -82,15 +49,6 @@ python login.py
 * 默认自动执行：每月 1 号和 31 号
 * 手动触发：Actions 页面点击 Run workflow
 * Actions 日志显示每个账号的登录结果
-
-## 日志示例
-
-```
-🚀 开始登录账号: user1
-✅ 账号 user1 登录成功
-🚀 开始登录账号: user2
-❌ 账号 user2 登录失败: Invalid credentials.
-```
 
 ## 注意事项
 
@@ -103,7 +61,7 @@ python login.py
 
 ```
 netlib-keepalive/
-├─ login.py               # 多账号登录脚本
+├─ login.py               # 单账号登录脚本
 ├─ .github/
 │  └─ workflows/
 │     └─ keepalive.yml   # GitHub Actions 工作流
