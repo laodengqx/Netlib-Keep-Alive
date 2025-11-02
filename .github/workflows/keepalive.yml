@@ -10,22 +10,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Elchecki deponejon
         uses: actions/checkout@v4
 
-      - name: Setup Python
+      - name: Agordi Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
 
-      - name: Install Playwright
+      - name: Instali Playwright
         run: |
           python -m pip install --upgrade pip
           python -m pip install playwright
           python -m playwright install chromium
 
-      - name: Run Keep Alive Login
+      - name: Ruli Teni-Salutan-Staton
         env:
-          SITE_ACCOUNTS: ${{ secrets.SITE_ACCOUNTS }}
+          UZANTONOMO: ${{ secrets.UZANTONOMO }}
+          PASVORTO: ${{ secrets.PASVORTO }}
         run: |
           python login.py
